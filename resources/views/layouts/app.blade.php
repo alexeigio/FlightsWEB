@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -48,15 +47,39 @@
                         <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li> 
-                        <li class="nav-item {{ request()->routeIs('products') ? 'active' : '' }}">
+                        @auth
+                        <li class="nav-item {{ request()->routeIs('reservations') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('reservations') }}">Reservations</a>
                         </li>
-                        <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}">
-                            <a class="nav-link" >About Us</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                    <i class="fas fa-user"></i> Perfil
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                    </button>
+                                </form>
+                            </div>
                         </li>
-                        <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}">
-                            <a class="nav-link" >Contact Us</a>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                            </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">
+                                <i class="fas fa-user-plus"></i> Registrarse
+                            </a>
+                        </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

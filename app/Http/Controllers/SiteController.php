@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SiteController extends Controller
 {
     public function index()
     {
-        return view('pages.home');
+        try {
+            $response = Http::get('http://localhost:3000/api/flights');
+            $flights = $response->object();
+        } catch (\Exception $e) {
+            $flights = [];
+        }
+
+        return view('pages.home', compact('flights'));
     }
 
     public function reservations()
