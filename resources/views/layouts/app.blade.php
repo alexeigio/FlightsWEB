@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>@yield('title', config('app.name'))</title>
+    <title>@yield('title', 'LYNX FLIGHTS')</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <h2>{{ config('app.name') }} <em>Clothing</em></h2>
+                    <h2>LYNX <em> FLIGHTS</em></h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                             <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li> 
                         <li class="nav-item {{ request()->routeIs('products') ? 'active' : '' }}">
-                            <a class="nav-link" >Our Products</a>
+                            <a class="nav-link" href="{{ route('reservations') }}">Reservations</a>
                         </li>
                         <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}">
                             <a class="nav-link" >About Us</a>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="inner-content">
-                        <p>Copyright &copy; {{ date('Y') }} {{ config('app.name') }} - All rights reserved.</p>
+                        <p>Copyright &copy; {{ date('Y') }} Giovanni Alexei Rodriguez Sandoval - All rights reserved.</p>
                     </div>
                 </div>
             </div>
