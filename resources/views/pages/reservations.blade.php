@@ -29,7 +29,6 @@
 <!-- Banner Ends Here -->
 
 <div class="container mt-5">
-    <!-- Sección de Vuelos Disponibles -->
     <div class="row">
         <div class="col-md-12 mb-4">
             <div class="card">
@@ -92,8 +91,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Cargado');
-    
-    // Inicializar el carrusel
+
     $('.owl-banner').owlCarousel({
         items: 1,
         loop: true,

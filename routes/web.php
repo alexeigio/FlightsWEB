@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\FlightController;
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,14 +20,15 @@ Route::middleware('auth')->group(function () {
 });
 
 // Rutas públicas
-Route::get('/', [SiteController::class, 'index'])->name('home');
+//Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/api/flights/search', [FlightController::class, 'search'])->name('flights.search');
 Route::get('/api/flights/{id}', [FlightController::class, 'show'])->name('flights.show');
+Route::get('/', [FlightController::class, 'index'])->name('home');
+
 
 // Rutas protegidas (requieren autenticación)
 Route::middleware(['auth'])->group(function () {
     Route::get('/reservations', [FlightController::class, 'index'])->name('reservations');
-   
 });
 
 require __DIR__.'/auth.php';
